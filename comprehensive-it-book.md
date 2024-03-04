@@ -3,6 +3,8 @@
 Um web service é definido como um componente de software desenhado para suportar a interação interoperável entre sistemas diferentes da web. Utilizando um conjunto de protocolos e padrões abertos, os web services permitem que aplicações se comuniquem, executem funções ou troquem dados, independentemente de suas linguagens de programação, arquiteturas ou plataformas subjacentes. Eles agem como uma ponte digital, facilitando o diálogo entre aplicações em um ambiente distribuído.
 
 ## SOAP (Simple Object Access Protocol)
+
+---
 ## REST (Representational State Transfer)
 
 REST é um estilo arquitetural definido por Roy Fielding em sua tese de doutorado em 2000. Seu desenvolvimento foi uma resposta direta às complexidades observadas em protocolos como SOAP, buscando uma maneira para resolver o problema da escalabilidade da web.
@@ -70,9 +72,13 @@ Código sob demanda tende a estabelecer um casamento das tecnologias usadas um s
 
 ### HTTP
 
+---
 ## XML-RPC (XML Remote Procedural Call)
+
+---
 ## JSON-RPC
 
+---
 ## GraphQL
 
 GraphQL é uma linguagem de consulta (QL -> query language) para APIs de dados na perspectiva do consumidor __frontend__. GraphQL é também uma camada em tempo de execução que precisa ser implementada no __backend__ e é essa camada que possibilita que o consumidor do __frontend__ utilize a nova linguagem.
@@ -98,6 +104,11 @@ __Descoberta de API e Autodocumentação__: O sistema de tipos de GraphQL fornec
 ### Implementação do Servidor GraphQL
 
 A implementação de um servidor GraphQL envolve a definição de um esquema (schema) que especifica os tipos e as relações entre eles, além dos resolvers, que são as funções responsáveis por buscar os dados para cada tipo. As linguagens mais comuns para implementação de servidores GraphQL incluem JavaScript (com Node.js), Python, Ruby, e Java.
- 
+
+---
 ## gRPC (Google Remote Procedure Call)
+
+---
 ## OData (Open Data Protocol)
+
+---
