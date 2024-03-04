@@ -23,10 +23,10 @@ As interações entre os componentes Web (clientes, servidores e intermediários
 
 Os componentes Web interagem consistentemente baseados nos quatro requisitos da interface uniforme:
 
-> 1. Identificação de recursos
-> 2. Manipulação de recursos através de representação
-> 3. Mensagens autodescritivas
-> 4. Hypermedia as the engine of application state (HATEOAS)
+1. Identificação de recursos
+2. Manipulação de recursos através de representação
+3. Mensagens autodescritivas
+4. Hypermedia as the engine of application state (HATEOAS)
 
 ##### Identificação de recursos
 
@@ -64,8 +64,40 @@ A Web faz uso pesado de código sob demanda, um requisito REST que permite aos s
 
 Código sob demanda tende a estabelecer um casamento das tecnologias usadas um servidor e seus clientes, já que o cliente precisa entender e executar o código que baixa sob demanda do servidor. Por este motivo, o código sob demanda é o único requisito do estilo arquitetural Web que é considerado opcional. Tecnologias embarcadas em navegadores como __Java applets__, JavaScript e Flash são exemplos no quesito de código sob demanda.
 
+### JAX-RS
+
+### JWT - JSON WEB TOKEN
+
+### HTTP
+
 ## XML-RPC (XML Remote Procedural Call)
 ## JSON-RPC
+
 ## GraphQL
+
+GraphQL é uma linguagem de consulta (QL -> query language) para APIs de dados na perspectiva do consumidor __frontend__. GraphQL é também uma camada em tempo de execução que precisa ser implementada no __backend__ e é essa camada que possibilita que o consumidor do __frontend__ utilize a nova linguagem.
+
+A principal vantagem do GraphQL é permitir que os clientes solicitem exatamente os dados de que precisam e possibilitar a agregação dos dados de múltiplas fontes em uma única consulta.
+
+### Princípios Fundamentais do GraphQL
+
+__Linguagem Declarativa__: Ao contrário do REST, onde o servidor define os endpoints e a forma dos dados, no GraphQL, são os clientes que especificam a estrutura dos dados requeridos através de consultas. Isso reduz o __over-fetching__ (demandar dados demais) e o __under-fetching__ (demandar dados de menos).
+
+__Sistema de Tipos__: GraphQL utiliza um sistema de tipos fortemente tipado para definir as capacidades da API. Cada API GraphQL é definida por seus tipos de dados, que podem ser escalares, objetos, enumerações, interfaces, entre outros.
+
+__Resolução de Consultas__: O servidor GraphQL resolve as consultas interpretando o grafo de dados requerido, acessando diferentes fontes de dados, como bancos de dados, APIs ou mesmo serviços de terceiros para compor a resposta.
+
+### Vantagens do GraphQL
+
+__Flexibilidade para os Clientes__: Os clientes podem adaptar as consultas para receber apenas os dados necessários, otimizando o tráfego de rede e melhorando a performance do aplicativo.
+
+__Integração de Dados de Múltiplas Fontes__: GraphQL pode unificar diversas fontes de dados em uma única API, simplificando o desenvolvimento frontend.
+
+__Descoberta de API e Autodocumentação__: O sistema de tipos de GraphQL fornece um entendimento claro do esquema da API, facilitando a exploração e documentação automática das APIs.
+
+### Implementação do Servidor GraphQL
+
+A implementação de um servidor GraphQL envolve a definição de um esquema (schema) que especifica os tipos e as relações entre eles, além dos resolvers, que são as funções responsáveis por buscar os dados para cada tipo. As linguagens mais comuns para implementação de servidores GraphQL incluem JavaScript (com Node.js), Python, Ruby, e Java.
+ 
 ## gRPC (Google Remote Procedure Call)
 ## OData (Open Data Protocol)
