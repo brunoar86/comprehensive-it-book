@@ -123,6 +123,23 @@ Promises são um padrão de desenvolvimento que visam representar a conclusão d
 ## Aplicações em Tempo Real
 
 ### WebSockets
+
+Websocket é uma tecnologia avançada que possibilita a abertura de uma comunicação interativa entre o navegador do usuário e o servidor. Diferente do modelo convencional de requisições HTTP, onde cada requisição necessita de uma nova conexão TCP, os websockets permitem que uma conexão única e persistente seja estabelecida. Essa conexão fica aberta, possibilitando que tanto o cliente quanto o servidor troquem dados a qualquer momento, de forma bidirecional e com baixa latência.
+
+O processo de estabelecimento da conexão websocket começa com um handshake HTTP, onde o cliente solicita a atualização da conexão para websockets através do cabeçalho 'Upgrade'. Se o servidor suportar websockets, ele responde apropriadamente, e a conexão HTTP é então elevada a uma conexão websocket. Após o handshake, os dados podem ser enviados em ambos os sentidos até que a conexão seja fechada por qualquer uma das partes.
+
+Após o estabelecimento bem-sucedido de uma conexão através do handshake inicial, a conexão passa por diferentes estados ao longo de sua vida. Estes estados permitem o gerenciamento eficiente da comunicação bidirecional entre o cliente e o servidor. Os estados principais são os seguintes:
+
+0 - CONNECTING: Este é o estado inicial, quando a conexão websocket está tentando ser aberta e não está pronta para enviar ou receber dados.
+1 - OPEN: Após o handshake ser bem-sucedido, a conexão websocket entra no estado "open". Neste estado, a conexão está ativa e tanto o cliente quanto o servidor podem enviar e receber mensagens. Este é o estado em que a maior parte da comunicação acontece.
+2- CLOSING: Quando uma solicitação para fechar a conexão é feita, o conexão entra no estado "closing". Isso pode ser iniciado por qualquer uma das partes (cliente ou servidor) enviando um frame de controle de fechamento. Este estado é o prelúdio do término da conexão, embora a conexão ainda permaneça aberta até que o processo de fechamento seja concluído.
+3 - CLOSED: Este estado indica que a conexão foi fechada completamente. Nenhum dado pode ser enviado ou recebido e a conexão não pode ser reaberta.
+
+Esta tecnologia é particularmente útil em aplicações web que necessitam de atualizações em tempo real, como jogos online, chats, plataformas de negociação financeira e qualquer aplicação que se beneficie de uma comunicação rápida e contínua entre o cliente e o servidor. Os websockets são suportados na maioria dos navegadores modernos e oferecem uma maneira eficiente de manter uma conexão viva sem a necessidade de polling constante ou long polling, técnicas essas que são menos eficientes e mais custosas em termos de recursos.
+
+O objetivo principal do websocket, conforme descrito no RFC 6455, é fornecer um mecanismo para comunicações bidirecionais e full-duplex sobre uma única conexão de longa duração, que é mais eficiente do que as abordagens tradicionais em HTTP para aplicações que requerem interações em tempo real. O protocolo permite que tanto o cliente quanto o servidor enviem dados a qualquer momento, uma vez que a conexão websocket esteja estabelecida, facilitando a criação de aplicações web dinâmicas e interativas.
+
+
 ### Server-Sent Events (SSE)
 ### Polling vs. Long Polling
 
