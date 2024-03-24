@@ -223,6 +223,131 @@ Código sob demanda tende a estabelecer um casamento das tecnologias usadas um s
 
 ### HTTP
 
+Hypermedia Transfer Protocol (HTTP) é um protocolo de camada de aplicação para a transmissão de documentos hipermídia, como HTML. Ele foi projetado para comunicação entre navegadores da web e servidores web, mas também pode ser usado para outros fins. O HTTP segue um modelo clássico cliente-servidor, com um cliente abrindo uma conexão para fazer uma solicitação e esperando até que receba uma resposta. HTTP é um protocolo sem estado, o que significa que o servidor não mantém nenhum dado (estado) entre duas solicitações. 
+
+#### Identificado recursos na Web
+
+O alvo de uma requisição HTTP é chamado de "resource", ou recurso em português, com a natureza ainda não definida; Isso pode ser um documento, uma foto ou qualquer outra coisa. Cada recurso é identificado por uma Identificação de recursos uniforme, do inglês __Uniform Resource Identifier__ (URI) usada pelo HTTP para identificar recursos.
+
+A identidade e a localização de recursos na Web são fornecidas, principalmente por um único URL (Uniform Resource Locator, um tipo de URI). Pode ser que as vezes a identidade e a localização não são dadas pelo mesmo URI: O HTTP usa um cabeçalho HTTP específico, 'Alt-Svc' quando o recurso solicitado quer que o cliente acesse-o de outra localização.
+
+##### URLs e URNs
+
+URLs
+
+A forma mais comum de URL é o Uniform Resource Locator (URL), que é conhecido como endereço de Web.
+
+https://developer.mozilla.org
+https://developer.mozilla.org/pt-BR/docs/Learn
+https://developer.mozilla.org/pt-BR/search?q=URL
+
+Qualquer um desses URLs podem ser digitados na barra de endereços do seu navegador dizendo para carregar a página associada (recurso).
+
+Uma URL é composta por diferentes partes, algumas são estritamente necessárias e outras são opcionais. Um exemplo mais complexo seria algo como isso:
+
+http://www.exemplo.com:80/pasta/para/meu-arquivo.html?chave1=valor1&chave2=valor2#AlgumaCoisaNoDocumento
+
+URNs 
+
+Um Nome de Recurso Uniforme do inglês Uniform Resource Name (URN) é uma URI que identifica um recurso pelo nome em um namespace particular.
+
+urn:usbn:9780141036144
+urn:ietf:rfc:7230
+
+As duas URNs correspondem:
+
+1. o livro Nineteen Eighty-Fourpor George Orwell;
+2. a especificação 720 da IETF, Hypertext Transfer Protocol (HTTP/1.1): Sintaxe de mensagem e rotas.
+
+##### Sintaxe das Uniform Resource Identifiers (URIs)
+
+ESQUEMA OU PROTOCOLO
+
+http://www.example.com:80/path
+
+__http://__ é o protocolo. Ele indica qual é o protocolo que o navegador irá usar. Usualmente o protocolo é o HTTP, ou sua versão segura, HTTPS. A Web requer um desses dois, mas os navegadores também sabem lidar com outros protocolos como o __mailto:__ (para abrir um cliente de e-mail) ou o __ftp:__ para fazer uma transferência de arquivo, então não fique surpreso se ver alguns desses protocolos. Esquemas comuns são:
+
+Esquema     |      Descrição
+            |
+data        |   URI de dados (en-US)
+file        |   Nomes de arquivos específicos do host
+ftp         |   Protocolo de transferência de arquivo (en-US)
+http/https  |   Hyper text transfer protocol (Secure)
+mailto      |   Endereço de correio eletrônico
+ssh         |   Secure shell
+tel         |   telefone
+urn         |   Uniform Resource Names
+view-source |   Código fonte de um recurso
+ws/wss      |   Conecções de WebSocket (Encriptadas)
+
+AUTORIDADE
+
+http://www.example.com:80/path/to/my
+
+__www.example.com__ é o nome de domínio ou autoridade que governa o namespace. Ele indica qual servidor web será solicitado. Alternativamente, é possível utilizar um IP adress, mas isso pode ser menos conveniente e não é muito utilizado na Web.
+
+PORTA
+
+http://www.example.com:80/path/to/myfile.html?key1=value1
+
+__:80__ é a porta nesta instância. Ela indica qual é o portão técnico para acessar os recursos no servidor web. Usualmente ela é omitida se o servidor web utiliza a porta padrão do protocolo HTTP (80 para HTTP e 443 para HTTPS) para garantir o acesso aos recursos. Do contrário, ela se torna obrigatória.
+
+CAMINHOS
+
+http://www.example.com:80/path/to/myfile.html?key1=value1
+
+__/path/to/myfile.html__ é o caminho para o recurso no servidor Web. Nos primeiros dias da Web, um caminho era representado pelo caminho físico correspondente no servidor Web. Hoje em dia isso é mais uma abstração tratada pelos servidores Web não sendo necessariamente o endereço físico do arquivo em questão.
+
+QUERY/PARÂMETROS
+
+http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument
+
+__?key1=value1&key2=value2__ são parâmetros extras fornecidos ao servidor Web. Eles são uma lista de pares chaves/valores separados com o símbolo __&__. O servidor pode usar esses parâmetros para fazer coisas extras depois de retornado o recurso para o usuário. Cada servidor web tem suas regrasem relação aos parâmetros, e o único jeito confiável de saber como um servidor Web específico trata os parâmetros é perguntando o dono do servidor.
+
+FRAGMENTOS
+
+http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument
+
+__SomehereInTheDocument__ é uma âncora para outra parte do próprio recurso. Uma âncora representa uma espécie de marcador dentro do recurso, dando ao navegador as instruções para mostrar o conteúdo localizado naquele ponto marcado. Em um documento HTML, por exemplo, o navegador irá dar scroll para a âncora em um ponto definido; em um vídeo ou áudio, o navegador irá tentar ir para o tempo que a âncora representa. Vale ressaltar que a parte após o #, também conhecido como identificador de fragmento, nunca é enviado ao servidor com o pedido.
+
+##### Notas de Uso
+
+Ao usar URLs em conteúdo HTML, em geral se deve usar apenas alguns desses esquemas URL. Quando se referir a subrecursos - que são, arquivos que estão sendo carregados como parte de um documento maior - você deverá utilizar apenas os esquemas HTTP e HTTPS. Gradualmente os navegadores estão reduzindo o suporte ao uso do FTP para carregar subrecursos por razões de segurança.
+
+FTP ainda é aceitável em alto nível (como digitados diretamente na barra de URL do navegador, ou o alvo do link), todavia alguns navegadores podem delegar o carregamento do FTP para outra aplicação.
+
+#### Data URLs
+
+Data URLs, URLs com prefixo do protocolo __data:__, permitem que criadores de conteúdos incorporem pequenos arquivos em linha nos documentos. Eles eram conhecidos como "data URIs" até o nome ser aposentado pela WHATWG.
+
+SINTAXE
+
+URLs de dados são compostos de quatro partes: um prefixo (data:), um tipo MIME indicando o tipo do dado, um token base64 opcional no caso de dado não textual e o dado em si:
+
+__data:[<mediatype>][;base64],<data>__
+
+O mediatype é uma string tipo MIME como 'image/jpeg' para um arquivo de imagem JPEG. Se omitido, considera-se text/plain;charset=US-ASCII.
+
+Se o dado contém caracteres reservados do RFC 3986, ou contém caracteres de espaço, carateres de linha nova, ou outro caracter não imprimível, esses caracteres precisarão ser codificados para URL.
+
+Se o dado for textual, você pode incorporar o texto (utilizando as entidades apropriadas ou os escapes baseados no fecho do tipo de documento). De outro modo, voce pode especificar o __base64__ para inserir dados binários  codificados em base64.
+
+Alguns exemplos:
+
+__data:,Hello%2C%20World! (Dados simples text/plain)__
+
+__data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D__ (Versão codificada em base64-encoded do anterior)
+
+__data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E__ (Um documento HTML com <h1>Hello, World!</h1>)
+
+__data:text/html,<script>alert('hi');</script>__ (Um documento html que executa um alerta Javascript)
+
+CODIFICAÇÃO DE DADOS EM FORMATO BASE64
+
+Base64 é um grupo de esquemas de codificação binary-to-text que representa dados binários em uma string no formato ASCII através da sua tradução para uma representação radix-64. Por consistir apenas de caracteres ASCII, as strings base64 são geralmente url-safe e é por isso que elas podem ser usadas para codificar dados em Data URLs.
+
+Para mais informações, acesse: https://developer.mozilla.org/en-US/docs/Web/HTTP
+
 ---
 ## XML-RPC (XML Remote Procedural Call)
 
@@ -261,7 +386,7 @@ A implementação de um servidor GraphQL envolve a definição de um esquema (sc
 
 ### Introdução
 
-gPRC é uma tecnologia de chamada de procedimento remoto (RPC) desenvolvida pelo Google, que permite que diferentes sistemas se comuniquem entre si de forma eficiente e independente da linguagem de programação. A sigla gRPC significa gRPC Remote Procedure Call. Pense no gRPC como um mensageiro eficiente (RPC) que pode entregar mensagens em diferentes idiomas (independência da linguagem) com a precisão e eficiência de um serviço expresso.
+gPRC é uma tecnologia de chamada de procedimento remoto (RPC) desenvolvida pelo Google, que permite que diferentes sistemas se comuniquem entre si de forma eficiente e independente da linguagem de programação. A sigla gRPC significa Google Remote Procedure Call. Pense no gRPC como um mensageiro eficiente (RPC) que pode entregar mensagens em diferentes idiomas (independência da linguagem) com a precisão e eficiência de um serviço expresso.
 
 
 ### Componentes-chave do gRPC
